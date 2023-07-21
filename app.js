@@ -1,12 +1,14 @@
 const createError = require("http-errors");
 const express = require("express");
 const cors = require("cors");
+const swaggerUI = require("swagger-ui-express");
+const docs = require("./docs");
 
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
-const indexRouter = require("./routes/index");
+const transactionsRouter = require("./routes/transactions");
 const usersRouter = require("./routes/users");
 
 const app = express();
@@ -22,8 +24,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
-app.use("/", indexRouter);
+app.use("/transactions", transactionsRouter);
 app.use("/users", usersRouter);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(docs));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

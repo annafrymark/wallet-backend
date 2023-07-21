@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const controllTransaction = require("../controller");
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -8,6 +8,5 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post("/", controllTransaction.addTransaction);
 
 module.exports = router;
