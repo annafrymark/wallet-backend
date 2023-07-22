@@ -22,10 +22,10 @@ const transactionSchema = new Schema({
     type: Number,
     required: [true, "Set sum of transaction"],
   },
-  owner: {
-    type: Schema.Types.ObjectId,
-    ref: "user",
-  },
+  // owner: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "user",
+  // },
 });
 
 
