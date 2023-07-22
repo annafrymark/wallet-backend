@@ -4,15 +4,15 @@ module.exports = {
     description: "Get all transaction of owner",
     operationId: "getAllTransactions",
     parameters: [
-    //   {
-    //     name: "id", //id of the user
-    //     in: "path",
-    //     schema: {
-    //       $ref: "#/components/schemas/id",
-    //     },
-    //     required: true,
-    //     description: "Id of user, owner of transaction",
-    //   },
+      //   {
+      //     name: "id", //id of the user
+      //     in: "path",
+      //     schema: {
+      //       $ref: "#/components/schemas/id",
+      //     },
+      //     required: true,
+      //     description: "Id of user, owner of transaction",
+      //   },
     ],
 
     responses: {
@@ -21,7 +21,7 @@ module.exports = {
         content: {
           "application/json": {
             schema: {
-              $ref: "#/components/schemas/Transactions",
+              $ref: "#/components/schemas/Transaction",
             },
           },
         },
