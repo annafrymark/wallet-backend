@@ -2,13 +2,13 @@ module.exports = {
   post: {
     tags: ["Transaction CRUD operations"],
     description: "Create transaction",
-    operationId: "createTransaction",
+    operationId: "postTransaction",
     parameters: [],
     requestBody: {
       content: {
         "application/json": {
           schema: {
-            $ref: "#/components/schemas/transaction",
+            $ref: "#/components/schemas/Transaction",
           },
         },
       },

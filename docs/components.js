@@ -5,6 +5,11 @@ module.exports = {
       Transaction: {
         type: "object",
         properties: {
+          id: {
+            type: "string", // data-type
+            description: "Todo identification number", // desc
+            example: "ytyVgh", // example of an id
+          },
           date: {
             type: "date",
             description: "Date of transaction",
@@ -94,6 +99,3 @@ module.exports = {
     },
   },
 };
-
-
-

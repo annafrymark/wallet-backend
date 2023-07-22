@@ -1,4 +1,4 @@
-const createTransaction = require("./createTransaction");
+const createTransaction = require("./post-transactions");
 
 module.exports = {
   paths: {
