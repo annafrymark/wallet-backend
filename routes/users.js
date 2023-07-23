@@ -26,4 +26,13 @@ router.get("/current", async (req, res, next) => {
   }
 });
 
+const ctrlUsers = require("../controller/auth");
+
+// TODO: check name of middleware and rename it here
+router.post("/logout", MIDDLEWARE, ctrlUsers.logout);
+
+
+
+
+
 module.exports = router;
