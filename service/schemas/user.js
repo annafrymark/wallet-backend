@@ -21,14 +21,15 @@ const userSchema = new Schema({
     type: String,
     default: null,
   },
-  //   verify: {
-  //     type: Boolean,
-  //     default: false,
-  //   },
-  //   verificationToken: {
-  //     type: StaticRange,
-  //     required: [true, "Verification token is required"],
-  //   },
+    // verify: {
+    //   type: Boolean,
+    //   default: false,
+    // },
+    // verificationToken: {
+    //   type: StaticRange,
+    //   required: [true, "Verification token is required"],
+    //   default: null,
+    // },
 });
 
 userSchema.methods.setPassword = function (password) {
