@@ -1,4 +1,5 @@
 const service = require("../service");
+const logout = require("./logout");
 
 const addTransaction = async (req, res, next) => {
   const { date, type, category, comment, sum } = req.body;
@@ -124,4 +125,5 @@ module.exports = {
   getByCategory,
   updateTransaction,
   removeTransaction,
+  logout,
 };
