@@ -10,4 +10,13 @@ router.get('/', userController.getAll);
 router.get('/current', auth, userController.current);
 router.patch('/', auth, userController.updateUserDetails);
 
+const ctrlUsers = require("../controller/auth");
+
+// TODO: check name of middleware and rename it here
+router.post("/logout", MIDDLEWARE, ctrlUsers.logout);
+
+
+
+
+
 module.exports = router;
