@@ -6,9 +6,9 @@ const controllTransaction = require("../controller");
 
 router.post("/", controllTransaction.addTransaction);
 
-router.get("/", controllTransaction.getAll);
+router.get("/", controllTransaction.getAllTransactions);
 
-router.get("/:category", controllTransaction.getByCategory);
+router.get("/:category", controllTransaction.getTransactionByCategory);
 
 router.put("/:transactionId", controllTransaction.updateTransaction);
 

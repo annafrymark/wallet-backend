@@ -1,16 +1,16 @@
-const createTransaction = require("./post-transactions");
-const getAllTransactions = require("./get-transactions");
+const createTransaction = require("./post-transaction");
+const getAllTransactions = require("./get-allTransactions");
+const getTransactionByCategory = require("./get-transactionByCategory");
 
 module.exports = {
   paths: {
     "/transactions": {
       ...createTransaction,
       ...getAllTransactions,
+      ...getTransactionByCategory,
     },
-    // "/transactions/{id}": {
-    //   ...get,
-    //   ...update,
-    //   ...deleteTr,
-    // },
+    "/transactions/{category}": {
+      ...getTransactionByCategory,
+    },
   },
 };

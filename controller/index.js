@@ -22,7 +22,7 @@ const addTransaction = async (req, res, next) => {
   }
 };
 
-const getAll = async (req, res, next) => {
+const getAllTransactions = async (req, res, next) => {
   try {
     const result = await service.listTransactions();
     //const result = await service.listTransactions(req.user._id);
@@ -37,7 +37,7 @@ const getAll = async (req, res, next) => {
   }
 };
 
-const getByCategory = async (req, res, next) => {
+const getTransactionByCategory = async (req, res, next) => {
   const category = req.params.category;
   try {
     const result = await service.getTransactionByCategory(
@@ -120,8 +120,8 @@ const removeTransaction = async (req, res, next) => {
 
 module.exports = {
   addTransaction,
-  getAll,
-  getByCategory,
+  getAllTransactions,
+  getTransactionByCategory,
   updateTransaction,
   removeTransaction,
 };

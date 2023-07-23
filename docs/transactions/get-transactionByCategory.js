@@ -1,8 +1,8 @@
 module.exports = {
   get: {
     tags: ["Transaction CRUD operations"],
-    description: "Get all transaction of owner",
-    operationId: "getAllTransactions",
+    description: "Get all transactions by category",
+    operationId: "getTransactionsByCategory",
     parameters: [
       //   {
       //     name: "id", //id of the user
@@ -13,11 +13,18 @@ module.exports = {
       //     required: true,
       //     description: "Id of user, owner of transaction",
       //   },
+      {
+        name: "category",
+        in: "path",
+        type: "string",
+        required: true,
+        description: "A list of transactions by category",
+      },
     ],
 
     responses: {
       200: {
-        description: "All transaction obtained successfully",
+        description: "All transactions obtained successfully",
         content: {
           "application/json": {
             schema: {
