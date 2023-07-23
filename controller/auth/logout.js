@@ -1,8 +1,8 @@
-const { userSchema } = require("../../models");
+const { User } = require("../../service/schemas/user");
 
 const logout = async (req, res) => {
   const { _id } = req.user;
-  const user = await userSchema.findOne({ _id });
+  const user = await User.findOne({ _id });
 
   if (!user) {
     return res.status(401).json({
@@ -13,7 +13,7 @@ const logout = async (req, res) => {
     });
   }
 
-  userSchema.findByIdAndUpdate(_id, { token: null });
+  user.findByIdAndUpdate(_id, { token: null });
   console.log("Token has been deleted and user is logout");
 
   await user.save();
