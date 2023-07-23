@@ -1,13 +1,19 @@
 const express = require("express");
 const router = express.Router();
 
+// auth is middleware to check jwt token
+const auth = require("../middleware/auth/auth");
+
+// TODO: Może przenieść informacje serwera do controller? Troszkę oczyści to kod tutaj w routes? Do przedyskutowania
+const ctrlUsers = require("../controller/auth");
+
 /* GET users listing. */
 // router.get("/", function (req, res, next) {
 //   res.send("respond with a resource");
 // });
 
 //do route ponizej dodamy jeszcze auth
-router.get("/current", async (req, res, next) => {
+router.get("/current", auth, async (req, res, next) => {
   const user = req.user;
   if (user) {
     return res.status(200).json({
@@ -26,13 +32,7 @@ router.get("/current", async (req, res, next) => {
   }
 });
 
-const ctrlUsers = require("../controller/auth");
-
 // TODO: check name of middleware and rename it here
-router.post("/logout", MIDDLEWARE, ctrlUsers.logout);
-
-
-
-
+router.post("/logout", auth, ctrlUsers.logout);
 
 module.exports = router;
