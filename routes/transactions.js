@@ -1,19 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const controllTransaction = require("../controller");
+const auth = require("../middleware-psp/auth/auth")
 
-//tu ponizej dodamy auth do routes
 
-router.post("/", controllTransaction.addTransaction);
 
-router.get("/", controllTransaction.getAllTransactions);
+router.post("/", auth, controllTransaction.addTransaction);
 
-router.get("/:category", controllTransaction.getTransactionByCategory);
+router.get("/", auth, controllTransaction.getAllTransactions);
 
-router.put("/:transactionId", controllTransaction.updateTransaction);
+router.get("/:category", auth, controllTransaction.getTransactionByCategory);
+
+router.put("/:transactionId", auth, controllTransaction.updateTransaction);
 
 // router.patch
 
-router.delete("/:transactionId", controllTransaction.removeTransaction);
+router.delete("/:transactionId", auth, controllTransaction.removeTransaction);
 
 module.exports = router;

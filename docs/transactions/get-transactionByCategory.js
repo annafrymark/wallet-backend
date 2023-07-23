@@ -18,7 +18,7 @@ module.exports = {
         in: "path",
         type: "string",
         required: true,
-        description: "A list of transactions by category",
+        description: "category of the transaction",
       },
     ],
 
