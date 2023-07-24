@@ -119,10 +119,15 @@ const removeTransaction = async (req, res, next) => {
   }
 };
 
+const monthlyYearBalance = async (req, res, next) => { 
+  // 
+};
+
 module.exports = {
   addTransaction,
   getAllTransactions,
   getTransactionByCategory,
   updateTransaction,
   removeTransaction,
+  monthlyYearBalance,
 };
