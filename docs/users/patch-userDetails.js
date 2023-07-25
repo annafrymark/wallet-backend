@@ -1,31 +1,31 @@
 module.exports = {
-  get: {
-    tags: ["Transaction CRUD operations"],
-    description: "Get all transactions by category",
-    operationId: "getTransactionsByCategory",
+  patch: {
+    tags: ["User CRUD operations"],
+    description: "Update user details",
+    operationId: "updateUser",
     parameters: [
       {
-        name: "category",
+        name: "id",
         in: "path",
         type: "string",
         required: true,
-        description: "category of the transaction",
+        description: "id of the user",
       },
     ],
 
     responses: {
       200: {
-        description: "All transactions obtained successfully",
+        description: "User updated successfully",
         content: {
           "application/json": {
             schema: {
-              $ref: "#/components/schemas/Transaction",
+              $ref: "#/components/schemas/User",
             },
           },
         },
       },
       404: {
-        description: "Transaction is not found",
+        description: "User is not found",
         content: {
           "application/json": {
             schema: {

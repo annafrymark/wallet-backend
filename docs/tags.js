@@ -3,5 +3,8 @@ module.exports = {
     {
       name: "Transaction CRUD operations",
     },
+    {
+      name: "User CRUD operations",
+    },
   ],
 };

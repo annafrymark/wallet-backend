@@ -1,13 +1,39 @@
 module.exports = {
   components: {
     schemas: {
+      //user model
+      User: {
+        type: "object",
+        properties: {
+          id: {
+            type: "string",
+            description: "Transaction identification number",
+            example: "ytyVgh",
+          },
+          email: {
+            type: "string",
+            description: "Email of the user",
+            example: "anna.frymark@gmail.com",
+          },
+          password: {
+            type: "string",
+            description: "Password of the user",
+            example: "fksks456",
+          },
+          firstName: {
+            type: "string",
+            description: "First name of the user",
+            example: "Anna",
+          },
+        },
+      },
       //transaction model
       Transaction: {
         type: "object",
         properties: {
           id: {
             type: "string", // data-type
-            description: "Todo identification number", // desc
+            description: "Transaction identification number", // desc
             example: "ytyVgh", // example of an id
           },
           date: {
