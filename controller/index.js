@@ -1,5 +1,5 @@
 const service = require("../service");
-const logout = require("./logout");
+
 
 const addTransaction = async (req, res, next) => {
   const { date, type, category, comment, sum } = req.body;
@@ -10,7 +10,7 @@ const addTransaction = async (req, res, next) => {
       category,
       comment,
       sum,
-      // owner: req.user.id,
+      owner: req.user.id,
     });
     res.status(201).json({
       status: "success",
@@ -23,10 +23,10 @@ const addTransaction = async (req, res, next) => {
   }
 };
 
-const getAll = async (req, res, next) => {
+const getAllTransactions = async (req, res, next) => {
   try {
-    const result = await service.listTransactions();
-    //const result = await service.listTransactions(req.user._id);
+    // const result = await service.listTransactions();
+    const result = await service.listTransactions(req.user._id);
     res.json({
       status: "success",
       code: 200,
@@ -38,7 +38,7 @@ const getAll = async (req, res, next) => {
   }
 };
 
-const getByCategory = async (req, res, next) => {
+const getTransactionByCategory = async (req, res, next) => {
   const category = req.params.category;
   try {
     const result = await service.getTransactionByCategory(
@@ -121,9 +121,8 @@ const removeTransaction = async (req, res, next) => {
 
 module.exports = {
   addTransaction,
-  getAll,
-  getByCategory,
+  getAllTransactions,
+  getTransactionByCategory,
   updateTransaction,
   removeTransaction,
-  logout,
 };
