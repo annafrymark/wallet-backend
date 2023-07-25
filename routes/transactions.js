@@ -11,7 +11,7 @@ router.get("/", auth, controllTransaction.getAllTransactions);
 
 router.get("/:category", auth, controllTransaction.getTransactionByCategory);
 
-// router.get('/summary', auth, controllTransaction.monthlyYearBalance);
+router.get('/summary', auth, controllTransaction.getDetailedStatistics);
 
 router.put("/:transactionId", auth, controllTransaction.updateTransaction);
 
