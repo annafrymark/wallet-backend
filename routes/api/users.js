@@ -1,8 +1,7 @@
 const express = require("express");
-const userController = require("../controller/user");
-const auth = require("../middleware-psp/auth/auth");
+const userController = require("../../controller/user");
+const auth = require("../../middleware-psp/auth/auth");
 const router = express.Router();
-
 
 router.post("/register", userController.singUp);
 

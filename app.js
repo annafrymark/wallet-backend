@@ -8,8 +8,8 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
-const transactionsRouter = require("./routes/transactions");
-const usersRouter = require("./routes/users");
+const transactionsRouter = require("./routes/api/transactions");
+const usersRouter = require("./routes/api/users");
 
 const app = express();
 
@@ -24,8 +24,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
-app.use("/transactions", transactionsRouter);
-app.use("/users", usersRouter);
+app.use("/api/transactions", transactionsRouter);
+app.use("/api/users", usersRouter);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(docs));
 
 // catch 404 and forward to error handler
