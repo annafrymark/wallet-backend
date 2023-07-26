@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const controllTransaction = require("../../controller");
+const controllTransaction = require("../../controller/index");
 const auth = require("../../middleware-psp/auth/auth");
 
 router.post("/", auth, controllTransaction.addTransaction);
