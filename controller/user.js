@@ -1,4 +1,4 @@
-const service = require("../service");
+const userService = require("../service/user");
 const {
   userSignInSchema,
   userSignUpSchema,
@@ -22,9 +22,8 @@ const getAll = async (req, res, next) => {
 
 const singUp = async (req, res, next) => {
   try {
-    const allUsers = await service.getAllUsers();
+    const allUsers = await userService.getAllUsers();
     const { email, password, firstName, repeatedPassword } = await req.body;
-
     const confirmedPassword = password === repeatedPassword;
     if (!email || !password || !confirmedPassword) {
       return res.status(400).json({ message: "Missing field!" });
@@ -37,19 +36,19 @@ const singUp = async (req, res, next) => {
     const { error } = userSignUpSchema.validate({
       email: email,
       password: password,
+      firstName: firstName,
     });
     if (error) {
       res.status(400).json({ message: error.details[0].message });
       return;
     }
     const verificationToken = uuidv4();
-
-    const newUser = await service.registerUser({
+    const newUser = await userService.registerUser(
       email,
       password,
       firstName,
-      verificationToken,
-    });
+      verificationToken
+    );
 
     if (!newUser) {
       res.status(409).json({ message: `Can't create user!` });
@@ -75,7 +74,7 @@ const login = async (req, res, next) => {
       return;
     }
 
-    const user = await service.getUserByEmail({ email });
+    const user = await userService.getUserByEmail({ email });
 
     if (!user || !user.validPassword(password)) {
       res.status(401).json({ message: "Email or password is wrong" });
@@ -150,12 +149,12 @@ const updateUserDetails = async (req, res, next) => {
       res.status(400).json({ message: error.details[0].message });
       return;
     }
-    const user = await service.getUser({ token: req.user.token });
+    const user = await userService.getUser({ token: req.user.token });
     if (!user) {
       res.status(401).json({ message: "Not authorized" });
       return;
     }
-    const newUser = await service.updateUser(user.id, {
+    const newUser = await userService.updateUser(user.id, {
       email,
       password,
       firstName,
