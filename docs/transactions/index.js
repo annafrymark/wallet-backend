@@ -5,17 +5,15 @@ const updateTransaction = require("./put-TransactionUpdate");
 const deleteTransaction = require("./delete-transaction");
 
 module.exports = {
-  paths: {
-    "/transactions": {
-      ...createTransaction,
-      ...getAllTransactions,
-    },
-    "/transactions/{category}": {
-      ...getTransactionByCategory,
-    },
-    "/transactions/{transactionId}": {
-      ...updateTransaction,
-      ...deleteTransaction,
-    },
+  "/transactions": {
+    ...createTransaction,
+    ...getAllTransactions,
+  },
+  "/transactions/{category}": {
+    ...getTransactionByCategory,
+  },
+  "/transactions/{transactionId}": {
+    ...updateTransaction,
+    ...deleteTransaction,
   },
 };

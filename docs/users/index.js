@@ -6,23 +6,21 @@ const updateUser = require("./patch-userDetails");
 const logoutUser = require("./post-userLogout");
 
 module.exports = {
-  paths: {
-    "/users": {
-      ...getAllUsers,
-      ...updateUser,
-    },
-    "/users/register": {
-      ...createUser,
-    },
-    "/users/login": {
-      ...loginUser,
-    },
-    "/users/current": {
-      ...currentUser,
-    },
+  "/users": {
+    ...getAllUsers,
+    ...updateUser,
+  },
+  "/users/register": {
+    ...createUser,
+  },
+  "/users/login": {
+    ...loginUser,
+  },
+  "/users/current": {
+    ...currentUser,
+  },
 
-    "/users/logout": {
-      ...logoutUser,
-    },
+  "/users/logout": {
+    ...logoutUser,
   },
 };

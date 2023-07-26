@@ -10,6 +10,5 @@ module.exports = {
   ...server,
   ...components,
   ...tags,
-  ...users,
-  ...transactions,
+  paths: { ...users, ...transactions },
 };

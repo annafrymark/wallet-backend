@@ -111,7 +111,6 @@ const logout = async (req, res, next) => {
     }
 
     user.findByIdAndUpdate(_id, { token: null });
-    //console.log("Token has been deleted and user is logout");
 
     await user.save();
 
@@ -123,24 +122,6 @@ const logout = async (req, res, next) => {
     next(error);
   }
 };
-
-// punkt wylogowania od Dawida do przekopiowania, mój poniżej
-
-// const logout = async (req, res, next) => {
-//     try {
-//         const user = await service.getUserById({ _id: req.user._id});
-//         if (!user) {
-//             res.status(401).json({ message: 'Not authorized' });
-//             return;
-//         }
-
-//         await service.updateUser( user.id, { token: null } );
-//         res.status(204).json();
-//     } catch (error) {
-//         console.error(error.message);
-//         next(error);
-//     }
-// };
 
 const current = async (req, res, next) => {
   const user = req.user;
