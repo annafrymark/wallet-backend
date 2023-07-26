@@ -24,6 +24,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
+require('./middleware-psp/config/config-passport');
+
 app.use("/api/transactions", transactionsRouter);
 app.use("/api/users", usersRouter);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(docs));
