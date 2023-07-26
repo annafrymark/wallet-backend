@@ -8,36 +8,30 @@ const transactionSchema = new Schema({
     default: Date.now,
     required: [true, "Set date of transaction"],
   },
-  // type: {
-  //   type: String,
-  //   enum: ['Expense', 'Income'],
-  //   required: [true, "Set type of transaction"],
-  // },
   type: {
     type: Boolean,
-    enum: ['-', '+'],
-    required: [true, 'Set type of transaction'],
+    required: [true, "Set type of transaction"], //Expense false,  Income true
   },
   category: {
     type: String,
     enum: [
-      'Main expenses',
-      'Products',
-      'Car',
-      'Self care',
-      'Child care',
-      'Household products',
-      'Education',
-      'Leisure',
-      'Other expenses',
-      'Income',
+      "Main expenses",
+      "Products",
+      "Car",
+      "Self care",
+      "Child care",
+      "Household products",
+      "Education",
+      "Leisure",
+      "Other expenses",
+      "Income",
     ],
-    default: 'Income',
+    default: "Income",
     required: [true, "Set category of transaction"],
   },
   comment: {
     type: String,
-    default: '-',
+    default: "-",
   },
   sum: {
     type: Number,
@@ -56,7 +50,7 @@ const transactionSchema = new Schema({
   },
 });
 
-transactionSchema.pre('save', function (next) { 
+transactionSchema.pre("save", function (next) {
   const date = new Date(this.date);
   this.month = date.getMonth() + 1;
   this.year = date.getFullYear();
