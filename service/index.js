@@ -1,4 +1,5 @@
 const Transaction = require("./schemas/transaction");
+// import { ObjectId } from "mongoose";
 
 const addTransaction = (transaction) => {
   const newTransaction = Transaction.create(transaction);
@@ -23,10 +24,26 @@ const removeTransaction = (id, owner) => {
   return Transaction.findByIdAndRemove({ _id: id, owner: owner });
 };
 
+// const getTMonthlyStatistics = (ownerId, startDate, endDate, type) => { 
+//   return Transaction.find(
+//     {
+//       $and: [
+//         {
+//           type: { $regex: `${type}` },
+//           date: { $gte: startDate, $late: endDate },
+//           owner: ownerId,
+//         },
+//       ],
+//     },
+//     { sum: 1, },
+//   ).sort({date: 1});
+// };
+
 module.exports = {
   addTransaction,
   listTransactions,
   getTransactionByCategory,
   updateTransaction,
   removeTransaction,
+  // getTransactionsByDatesType,
 };
