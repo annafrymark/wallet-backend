@@ -104,7 +104,7 @@ const updateTransaction = async (req, res, next) => {
 };
 
 const removeTransaction = async (req, res, next) => {
-  const { id } = req.params;
+  const id = req.params.transactionId;
 
   try {
     const result = await service.removeTransaction(id, req.user._id);
@@ -112,8 +112,7 @@ const removeTransaction = async (req, res, next) => {
       res.json({
         status: "success",
         code: 200,
-        message: `Not found contact id: ${id}`,
-        data: "Not found",
+        message: `Transaction id: ${id} deleted successfully`,
       });
     }
   } catch (error) {

@@ -1,7 +1,7 @@
 const Transaction = require("./schemas/transaction");
 // import { ObjectId } from "mongoose";
 
-const addTransaction = (transaction) => {
+const addTransaction = async (transaction) => {
   const newTransaction = Transaction.create(transaction);
   return newTransaction;
 };
@@ -10,21 +10,21 @@ const listTransactions = async (owner) => {
   return Transaction.find({ owner: owner });
 };
 
-const getTransactionByCategory = (category, owner) => {
+const getTransactionByCategory = async (category, owner) => {
   return Transaction.findOne({ category: category, owner: owner });
 };
 
-const updateTransaction = (id, transaction, owner) => {
+const updateTransaction = async (id, transaction, owner) => {
   return Transaction.findByIdAndUpdate({ _id: id, owner: owner }, transaction, {
     new: true,
   });
 };
 
-const removeTransaction = (id, owner) => {
+const removeTransaction = async (id, owner) => {
   return Transaction.findByIdAndRemove({ _id: id, owner: owner });
 };
 
-// const getTMonthlyStatistics = (ownerId, startDate, endDate, type) => { 
+// const getTMonthlyStatistics = (ownerId, startDate, endDate, type) => {
 //   return Transaction.find(
 //     {
 //       $and: [
