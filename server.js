@@ -24,7 +24,6 @@ const server = http.createServer(app);
 /**
  * Get connection to database
  */
-
 const URI_DB = process.env.DB_URI;
 
 const connection = mongoose.connect(URI_DB, {
