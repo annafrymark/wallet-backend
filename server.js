@@ -24,10 +24,8 @@ const server = http.createServer(app);
 /**
  * Get connection to database
  */
+const URI_DB = process.env.DB_URI;
 
-// const URI_DB = process.env.DB_URI;
-const URI_DB =
-  "mongodb+srv://nextUser:OWRNLj21LPPYPJxH@cluster0.xyamjws.mongodb.net/db-wallet";
 const connection = mongoose.connect(URI_DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

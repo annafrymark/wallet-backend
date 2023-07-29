@@ -10,6 +10,7 @@ const transactionSchema = new Schema({
   },
   type: {
     type: Boolean,
+    // enum: ["-", "+"],
     required: [true, "Set type of transaction"], //Expense false,  Income true
   },
   category: {
@@ -27,7 +28,7 @@ const transactionSchema = new Schema({
       "Income",
     ],
     default: "Income",
-    required: [true, "Set category of transaction"],
+    // required: [true, "Set category of transaction"],
   },
   comment: {
     type: String,
@@ -48,6 +49,10 @@ const transactionSchema = new Schema({
   year: {
     type: Number,
   },
+},
+{
+  versionKey: false,
+  timestamps: true,
 });
 
 transactionSchema.pre("save", function (next) {

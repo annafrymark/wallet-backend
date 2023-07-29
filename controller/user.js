@@ -109,7 +109,7 @@ const logout = async (req, res, next) => {
       });
     }
 
-    user.findByIdAndUpdate(_id, { token: null });
+    User.findByIdAndUpdate(_id, { token: null });
 
     await user.save();
 
