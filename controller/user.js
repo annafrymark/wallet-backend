@@ -22,14 +22,14 @@ const getAll = async (req, res, next) => {
 
 const singUp = async (req, res, next) => {
   try {
-    const allUsers = await userService.getAllUsers();
-    const { email, password, firstName, repeatedPassword } = await req.body;
-    const confirmedPassword = password === repeatedPassword;
-    if (!email || !password || !confirmedPassword) {
+    const { email, password, firstName, confirmPassword } = await req.body;
+    const repeatedPassword = password === confirmPassword;
+    if (!email || !password || !repeatedPassword) {
       return res.status(400).json({ message: "Missing field!" });
     }
+    const user = await userService.getUserByEmail(email);
 
-    if (allUsers.includes(email)) {
+    if (user) {
       return res.status(409).json({ message: "Email is in use!" });
     }
 
