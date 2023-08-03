@@ -74,7 +74,7 @@ const login = async (req, res, next) => {
       return;
     }
 
-    const user = await userService.getUserByEmail(email);
+    const user = await userService.getUserByEmail({email});
 
     if (!user || !user.validPassword(password)) {
       res.status(401).json({ message: "Email or password is wrong" });

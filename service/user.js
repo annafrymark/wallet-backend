@@ -20,7 +20,7 @@ const getAllUsers = () => {
 };
 
 const getUserByEmail = (email) => {
-  return User.findOne({ email });
+  return User.findOne( email );
 };
 
 const getUserById = (id) => {
